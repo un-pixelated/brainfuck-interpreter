@@ -3,3 +3,12 @@ eg. size of the memory tape (from 30000 to dynamic? 10000? 100? efficient?)
 and helper functions
 
 we do a two-pass approach
+
+notes: 
+
+maybe use #pragma once
+
+also maybe not call malloc in the stack implementation and let it live on the stack instead
+
+maybe add NULL checks to all functions inside stack.h
+good defensive programming practice
