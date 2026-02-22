@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "constants.h"
+#include "helpers.h"
 
 int main(int argc, char *argv[]) {
         if (argc < 2) {
@@ -8,7 +10,10 @@ int main(int argc, char *argv[]) {
                 return 1;
         }
 
-        // TODO: Add .bf validation
+        if (!validate_ext(argv[1])) {
+                fprintf(stderr, "%s is not a valid brainfuck file\nfile extension must be .bf\n", argv[1]);
+                return 1;
+        }
 
         FILE *bf_fileptr = fopen(argv[1], "r");
         if (bf_fileptr == NULL) {
