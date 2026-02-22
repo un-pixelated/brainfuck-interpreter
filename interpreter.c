@@ -33,7 +33,9 @@ int main(int argc, char *argv[]) {
         int char_idx = 0;
         
         // bracket_map[position of opening bracket] = position of closing bracket
+        // bracket_map[position of closing bracket] = position of opening bracket
         // bracket_map[ '[' ] = ']' (but int positions)
+        // bracket_map[ ']' ] = '[' (but int positions)
         int bracket_map[ARRAY_LENGTH];
 
         Stack *validation_stack = stack_init();
@@ -118,6 +120,8 @@ int main(int argc, char *argv[]) {
                         case ',':
                         scanf("%c", &cell_array[char_idx]);
                         break;
+
+                        // TODO LOOPS
 
                         default:
                         // handling comments
