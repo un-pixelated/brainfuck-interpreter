@@ -102,7 +102,7 @@ int main(int argc, char *argv[]) {
                         case '+':
                         cell_array[char_idx]++;
                         // cell wraparound
-                        if (cell_array[char_idx] == 128) cell_array[char_idx] = 0;
+                        if (cell_array[char_idx] == -128) cell_array[char_idx] = 0;
                         break;
 
                         case '-':
@@ -123,7 +123,7 @@ int main(int argc, char *argv[]) {
                         // handling comments
                         break;
                 }
-        } 
+        } printf("\n"); 
 
         fclose(bf_fileptr);
         return 0;
