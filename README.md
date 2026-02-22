@@ -1,1 +1,1 @@
-Just a CLI based brainfuck interpreter
+Yet another brainfuck interpreter
