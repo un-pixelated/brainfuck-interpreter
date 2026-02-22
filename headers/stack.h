@@ -7,7 +7,7 @@
 #include "constants.h"
 
 struct Stack {
-        int array[STACK_SIZE];
+        int stack[STACK_SIZE];
         int top;
 };
 
@@ -25,34 +25,34 @@ Stack *stack_init(void) {
         return stack;
 }
 
-int stack_empty(Stack *stack) {
-        if (stack->top == -1) return 1;
+int stack_empty(Stack *self) {
+        if (self->top == -1) return 1;
         return 0;
 }
 
-int stack_full(Stack *stack) {
-        if (stack->top == STACK_SIZE - 1) return 1;
+int stack_full(Stack *self) {
+        if (self->top == STACK_SIZE - 1) return 1;
         return 0;
 }
 
-void stack_push(Stack *stack, int data) {
-        if (stack_full(stack) == 1) {
+void stack_push(Stack *self, int data) {
+        if (stack_full(self) == 1) {
                 fprintf(stderr, "stack overflow\n");
                 return;
         }
 
-        stack->top++;
-        stack->array[stack->top] = data;
+        self->top++;
+        self->stack[self->top] = data;
 }
 
-int stack_pop(Stack *stack) {
-        if (stack_empty(stack) == 1) {
+int stack_pop(Stack *self) {
+        if (stack_empty(self) == 1) {
                 fprintf(stderr, "stack underflow\n");
                 return -1;
         }
 
-        stack->top--;
-        return stack->array[stack->top + 1];
+        self->top--;
+        return self->stack[self->top + 1];
 }
 
 #endif
