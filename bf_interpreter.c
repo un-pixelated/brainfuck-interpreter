@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 
         int curr_char;
         while ((curr_char = fgetc(bf_fileptr)) != EOF) {
-
+                // TODO LMFAO
         }
 
         fclose(bf_fileptr);
