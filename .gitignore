@@ -1,0 +1,10 @@
+.DS_Store
+*.bf
+
+# executables
+main
+bf
+interpreter
+
+*.o
+*.out
