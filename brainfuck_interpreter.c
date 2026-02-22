@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "constants.h"
 
 int main(int argc, char *argv[]) {
         if (argc < 2) {
@@ -14,12 +15,10 @@ int main(int argc, char *argv[]) {
                 return 1;
         }
 
+        int cell_array[ARRAY_LENGTH];
+
         int curr_char;
         while ((curr_char = fgetc(bf_fileptr)) != EOF) {
-                // interpreter implementation goes here.
-                // we're simulating BF as we read the file
-                // Pros: faster, more memory efficient
-                // Cons: doesn't catch errors like mismatched parentheses
 
         }
 

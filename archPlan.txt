@@ -1,0 +1,5 @@
+We'll most likely have headers for stuff like constants
+eg. size of the memory tape (from 30000 to dynamic? 10000? 100? efficient?)
+and helper functions
+
+we do a two-pass approach
