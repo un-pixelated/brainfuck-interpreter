@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "constants.h"
-#include "helpers.h"
-#include "stack.h"
+#include "./headers/constants.h"
+#include "./headers/helpers.h"
+#include "./headers/stack.h"
 
 int main(int argc, char *argv[]) {
         if (argc < 2) {
