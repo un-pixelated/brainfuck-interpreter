@@ -15,3 +15,6 @@ good defensive programming practice
 
 make note of error messages in stack_pop() function.
 maybe in the future you'd want to move them to interpreter.c for consistency
+
+for cell value wrapping
+if (cell value == 128) cell value = 0; strictly ASCII.

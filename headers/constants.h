@@ -3,7 +3,7 @@
 
 /*
 The constants header defines constants which might be re-used multiple times
-in the interpreter and else-where so it's good to have them all in one place.
+in the interpreter and elsewhere so it's good to have them all in one place.
 */
 
 // I want this modifiable by the user input flags

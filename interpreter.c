@@ -41,6 +41,7 @@ int main(int argc, char *argv[]) {
                 return 1;
         }
 
+        // pass 1
         while ((curr_char = fgetc(bf_fileptr)) != EOF) {
                 if (curr_char != '[' && curr_char != ']') {
                         char_idx++;
@@ -72,6 +73,37 @@ int main(int argc, char *argv[]) {
         }
 
         free(validation_stack);
+
+        // pass 2
+        rewind(bf_fileptr);
+        
+        char_idx = 0;
+
+        while ((curr_char = fgetc(bf_fileptr)) != EOF) {
+                switch (curr_char) {
+                        case '>':
+                        // wraparound
+                        if (char_idx == ARRAY_LENGTH - 1) {
+                                char_idx = 0;
+                                break;
+                        }
+                        char_idx++;
+                        break;
+
+                        case '<':
+                        // wraparound
+                        if (char_idx == 0) {
+                                char_idx = ARRAY_LENGTH - 1;
+                                break;
+                        }
+                        char_idx--;
+                        break;
+
+                        default:
+                        // handling comments
+                        break;
+                }
+        } 
 
         fclose(bf_fileptr);
         return 0;
