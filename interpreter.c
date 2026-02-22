@@ -60,6 +60,7 @@ int main(int argc, char *argv[]) {
                         }
 
                         bracket_map[closer_position] = char_idx;
+                        bracket_map[char_idx] = closer_position;
                         char_idx++;
                 }
         }
