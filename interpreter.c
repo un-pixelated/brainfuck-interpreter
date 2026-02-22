@@ -99,6 +99,26 @@ int main(int argc, char *argv[]) {
                         char_idx--;
                         break;
 
+                        case '+':
+                        cell_array[char_idx]++;
+                        // cell wraparound
+                        if (cell_array[char_idx] == 128) cell_array[char_idx] = 0;
+                        break;
+
+                        case '-':
+                        cell_array[char_idx]--;
+                        // cell wraparound
+                        if (cell_array[char_idx] == -1) cell_array[char_idx] = 127;
+                        break;
+
+                        case '.':
+                        printf("%c", cell_array[char_idx]);
+                        break;
+
+                        case ',':
+                        scanf("%c", &cell_array[char_idx]);
+                        break;
+
                         default:
                         // handling comments
                         break;
