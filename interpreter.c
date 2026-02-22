@@ -3,6 +3,7 @@
 
 #include "constants.h"
 #include "helpers.h"
+#include "stack.h"
 
 int main(int argc, char *argv[]) {
         if (argc < 2) {
@@ -28,8 +29,12 @@ int main(int argc, char *argv[]) {
         }
 
         int curr_char;
+        int char_num = 0;
+        int bracket_map[ARRAY_LENGTH];
         while ((curr_char = fgetc(bf_fileptr)) != EOF) {
-                // TODO LMFAO
+                if (curr_char != '[' && curr_char != ']') {}
+
+                
         }
 
         fclose(bf_fileptr);
