@@ -14,8 +14,8 @@ int main(int argc, char *argv[]) {
                 return 1;
         }
 
-        int bf_fileptracter;
-        while ((bf_fileptracter = fgetc(bf_fileptr)) != EOF) {
+        int curr_char;
+        while ((curr_char = fgetc(bf_fileptr)) != EOF) {
                 // interpreter implementation goes here.
                 // we're simulating BF as we read the file
                 // Pros: faster, more memory efficient
