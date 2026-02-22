@@ -8,14 +8,14 @@ int main(int argc, char *argv[]) {
 
         // TODO: Add .bf validation
 
-        FILE *brainfuck_file_pointer = fopen(argv[1], "r");
-        if (brainfuck_file_pointer == NULL) {
+        FILE *bf_fileptr = fopen(argv[1], "r");
+        if (bf_fileptr == NULL) {
                 perror(argv[1]);
                 return 1;
         }
 
-        int current_character;
-        while ((current_character = fgetc(brainfuck_file_pointer)) != EOF) {
+        int bf_fileptracter;
+        while ((bf_fileptracter = fgetc(bf_fileptr)) != EOF) {
                 // interpreter implementation goes here.
                 // we're simulating BF as we read the file
                 // Pros: faster, more memory efficient
@@ -23,6 +23,6 @@ int main(int argc, char *argv[]) {
 
         }
 
-        fclose(brainfuck_file_pointer);
+        fclose(bf_fileptr);
         return 0;
 }
