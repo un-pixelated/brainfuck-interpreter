@@ -87,46 +87,46 @@ int main(int argc, char *argv[]) {
         // pass 2
         rewind(bf_fileptr);
         
-        char_idx = 0;
+        int cell_ptr = 0;
 
         while ((curr_char = fgetc(bf_fileptr)) != EOF) {
                 switch (curr_char) {
                         case '>':
                         // wraparound
-                        if (char_idx == ARRAY_LENGTH - 1) {
-                                char_idx = 0;
+                        if (cell_ptr == ARRAY_LENGTH - 1) {
+                                cell_ptr = 0;
                                 break;
                         }
-                        char_idx++;
+                        cell_ptr++;
                         break;
 
                         case '<':
                         // wraparound
-                        if (char_idx == 0) {
-                                char_idx = ARRAY_LENGTH - 1;
+                        if (cell_ptr == 0) {
+                                cell_ptr = ARRAY_LENGTH - 1;
                                 break;
                         }
-                        char_idx--;
+                        cell_ptr--;
                         break;
 
                         case '+':
-                        cell_array[char_idx]++;
+                        cell_array[cell_ptr]++;
                         // cell wraparound
-                        if (cell_array[char_idx] == -128) cell_array[char_idx] = 0;
+                        if (cell_array[cell_ptr] == -128) cell_array[cell_ptr] = 0;
                         break;
 
                         case '-':
-                        cell_array[char_idx]--;
+                        cell_array[cell_ptr]--;
                         // cell wraparound
-                        if (cell_array[char_idx] == -1) cell_array[char_idx] = 127;
+                        if (cell_array[cell_ptr] == -1) cell_array[cell_ptr] = 127;
                         break;
 
                         case '.':
-                        printf("%c", cell_array[char_idx]);
+                        printf("%c", cell_array[cell_ptr]);
                         break;
 
                         case ',':
-                        scanf("%c", &cell_array[char_idx]);
+                        scanf("%c", &cell_array[cell_ptr]);
                         break;
 
                         // TODO LOOPS
