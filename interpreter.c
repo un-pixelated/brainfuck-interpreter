@@ -22,6 +22,7 @@ int main(int argc, char *argv[]) {
                 return 1;
         }
 
+        // Empty file handling
         if (fgetc(bf_fileptr) == EOF) {
                 fprintf(stderr, "error: empty file\n");
                 fclose(bf_fileptr);
