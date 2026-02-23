@@ -65,3 +65,11 @@ case ']':
 	}
 	break;
 ```
+
+ ~/Projects/yabi   main ±  gcc interpreter.c -o main
+In file included from interpreter.c:6:
+././headers/stack.h:10:13: error: fields must have a constant size: 'variable length array in structure' extension will never be supported
+   10 |         int stack[STACK_SIZE];
+      |             ^
+1 error generated.
+ ✘  ~/Projects/yabi   main ± 

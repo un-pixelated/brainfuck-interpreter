@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
         // bracket_map[position of closing bracket] = position of opening bracket
         // bracket_map[ '[' ] = ']' (but int positions)
         // bracket_map[ ']' ] = '[' (but int positions)
-        int bracket_map[ARRAY_LENGTH];
+        int bracket_map[MAP_LEN];
 
         Stack *validation_stack = stack_init();
         if (validation_stack == NULL) {
