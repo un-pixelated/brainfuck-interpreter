@@ -9,8 +9,8 @@ int validate_ext(const char *filename) {
                         continue;
                 }
                 
-                if (*(filename + 1) == '\0' ||
-                    *(filename + 2) == '\0') return 0;
+                if (*(filename + 1) == '\0' || *(filename + 2) == '\0') return 0;
+                // Short circuit evaluation is THE GOAT
                 
                 else if (*(filename + 1) == 'b' &&
                          *(filename + 2) == 'f' &&

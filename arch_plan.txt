@@ -18,3 +18,50 @@ maybe in the future you'd want to move them to interpreter.c for consistency
 
 for cell value wrapping
 if (cell value == 128) cell value = 0; strictly ASCII.
+
+valgrind?
+
+strict mode
+
+std error file
+
+
+
+LOOP LOGIC:
+
+`[`
+If the byte at the data pointer is zero, then instead of moving the instruction pointer forward to the next command, jump it forward to the command after the matching `]` command
+
+`]`
+If the byte at the data pointer is nonzero, then instead of moving the instruction pointer forward to the next command, jump it back to the command after the matching `[` command
+
+Let's take the following code snippet: `,[>+<-]>.`
+
+Accepts input (say 'A' (65))
+Puts input in cell 1
+Starts loop
+	goes to cell 2
+	increments cell 2
+	goes to cell 1
+	decrements cell 1
+	loop end
+goes to cell 2
+outputs cell 2
+
+the first pass gave us a `bracket_map[length_file] = [x, 6, x, x, x, x, 1, x, x]`
+
+Let's simulate
+
+```
+case '[':
+	if (cell_array[cell_ptr] == 0) {
+		fseek(bf_fileptr, bracket_map[char_idx] + 1, SEEK_SET);
+	}
+	break;
+
+case ']':
+	if (cell_array[cell_ptr] != 0) {
+		fseek(bf_fileptr, bracket_map[char_idx] + 1, SEEK_SET);
+	}
+	break;
+```
