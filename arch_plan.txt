@@ -73,3 +73,12 @@ In file included from interpreter.c:6:
       |             ^
 1 error generated.
  ✘  ~/Projects/yabi   main ± 
+
+ add abstraction to interpreter.c
+
+
+FOR CPP PORT:
+ logger.error
+ logger.trace
+
+ config obj.merge conflict func
