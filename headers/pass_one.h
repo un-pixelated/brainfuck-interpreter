@@ -6,7 +6,7 @@
 #include "stack.h"
 #include "error_messages.h"
 
-int build_bracket_map(int *bracket_map, Stack *validation_stack, FILE *bf_fileptr) {
+int build_bracket_map(FILE *bf_fileptr, int *bracket_map, Stack *validation_stack) {
 
         int curr_char;
         int char_idx = 0;

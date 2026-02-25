@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
         }
 
         // pass 1
-        if (build_bracket_map(bracket_map, validation_stack, bf_fileptr) == 1) {
+        if (build_bracket_map(bf_fileptr, bracket_map, validation_stack) == 1) {
                 free_memory(bracket_map, validation_stack, NULL);
                 fclose(bf_fileptr);
         }
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
 
         // pass 2
         rewind(bf_fileptr);
-        interpret_brainfuck(bf_fileptr, cell_array, bracket_map);
+        interpret_brainfuck(bf_fileptr, bracket_map, cell_array);
 
         free_memory(bracket_map, cell_array, NULL);
         fclose(bf_fileptr);
