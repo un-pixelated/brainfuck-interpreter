@@ -51,7 +51,6 @@ int main(int argc, char *argv[]) {
 
         // pass 2
         rewind(bf_fileptr);
-
         interpret_brainfuck(bf_fileptr, cell_array, bracket_map);
 
         free_memory(bracket_map, cell_array, NULL);
