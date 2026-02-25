@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
 
         Stack *validation_stack = stack_init();
         if (memory_allocation_check(validation_stack) == 1) {
+                free_memory(bracket_map, NULL);
                 fclose(bf_fileptr);
                 return 1;
         }
