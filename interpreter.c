@@ -4,13 +4,14 @@
 #include "./headers/constants.h"
 #include "./headers/input_validation.h"
 #include "./headers/stack.h"
+#include "./headers/memory_management.h"
 
 int main(int argc, char *argv[]) {
         char *filename = argv[1];
 
         if (validate_number_of_arguments(argc, argv[0]) == 1) exit(1);
-        
-        if (validate_extension(filename) == 1) exit(1);
+
+        if (validate_file_extension(filename) == 1) exit(1);
 
         FILE *bf_fileptr = fopen(filename, "r");
         if (validate_file_exists(bf_fileptr, filename) == 1) exit(1);
@@ -18,26 +19,17 @@ int main(int argc, char *argv[]) {
         if (validate_file_not_empty(&bf_fileptr, fgetc(bf_fileptr)) == 1) exit(1);
 
         char *cell_array = calloc(ARRAY_LENGTH, CELL_SIZE);
-        if (cell_array == NULL) {
-                fprintf(stderr, "couldn't allocate memory\n");
-                return 1;
-        }
+        if (memory_allocation_check(cell_array) == 1) exit(1);
 
         int curr_char;
-
         int char_idx = 0;
         
         // bracket_map[position of opening bracket] = position of closing bracket
         // bracket_map[position of closing bracket] = position of opening bracket
-        // bracket_map[ '[' ] = ']' (but int positions)
-        // bracket_map[ ']' ] = '[' (but int positions)
         int bracket_map[MAP_LEN];
 
         Stack *validation_stack = stack_init();
-        if (validation_stack == NULL) {
-                free(cell_array);
-                return 1;
-        }
+        if (memory_allocation_check(validation_stack) == 1) exit(1);
 
         // pass 1
         while ((curr_char = fgetc(bf_fileptr)) != EOF) {

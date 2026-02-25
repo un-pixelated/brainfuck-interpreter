@@ -33,7 +33,7 @@ int validate_number_of_arguments(const int num_args, const char* binary_name) {
         }
 }
 
-int validate_extension(const char *filename) {
+int validate_file_extension(const char *filename) {
         if (extension_checker(filename) == 0) {
                 fprintf(stderr, ERR_WRONG_FILE_EXTENSION, filename);
                 return 1;

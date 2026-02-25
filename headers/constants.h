@@ -1,21 +1,16 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-/*
-The constants header defines constants which might be re-used multiple times
-in the interpreter and elsewhere so it's good to have them all in one place.
-*/
-
-// I want this modifiable by the user input flags
+// length of the cell_array
 #define ARRAY_LENGTH 30000
 
+// length of the bracket validation map (ideally length of file)
 #define MAP_LEN 100000
 
-// size in bytes, ideally 7 bits (< 1 byte) to support ASCII for now we go with 1
+// size of a cell in bytes
 #define CELL_SIZE 1
 
-// size for the parentheses matching stack, also changable for your program needs
-// why 1024? God help you if you're writing a brainfuck program with more nesting depth than this.
+// size for the parentheses matching stack (nesting depth)
 #define STACK_SIZE 1024
 
 #endif
