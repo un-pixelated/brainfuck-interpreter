@@ -5,6 +5,8 @@
 #define ERR_WRONG_FILE_EXTENSION "error: %s is not a valid brainfuck file\n       file extension must be .bf\n"
 #define ERR_EMPTY_FILE "error: empty file\n"
 
-#define ERR_MEMORY_ALLOC_FAIL "couldn't allocate memory\n"
+#define ERR_MEMORY_ALLOC_FAIL "error: couldn't allocate memory\n"
+
+#define ERR_BRACKET_MISMATCH "error: bracket mismatch\n"
 
 #endif

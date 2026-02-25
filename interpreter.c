@@ -3,8 +3,8 @@
 
 #include "./headers/constants.h"
 #include "./headers/input_validation.h"
-#include "./headers/stack.h"
 #include "./headers/memory_management.h"
+#include "./headers/pass_one.h"
 
 int main(int argc, char *argv[]) {
         if (validate_number_of_arguments(argc, argv[0]) == 1) return 1;
@@ -18,15 +18,6 @@ int main(int argc, char *argv[]) {
 
         if (validate_file_not_empty(&bf_fileptr, fgetc(bf_fileptr)) == 1) return 1;
 
-        char *cell_array = calloc(CELL_ARRAY_LENGTH, CELL_SIZE);
-        if (memory_allocation_check(cell_array) == 1) {
-                fclose(bf_fileptr);
-                return 1;
-        }
-
-        int curr_char;
-        int char_idx = 0;
-        
         // bracket_map[position of opening bracket] = position of closing bracket
         // bracket_map[position of closing bracket] = position of opening bracket
         int *bracket_map = malloc(MAP_LEN * sizeof(int));
@@ -42,50 +33,21 @@ int main(int argc, char *argv[]) {
         }
 
         // pass 1
-        while ((curr_char = fgetc(bf_fileptr)) != EOF) {
-                if (curr_char != '[' && curr_char != ']') {
-                        char_idx++;
-                        continue;
-                }
-                
-                else if (curr_char == '[') {
-                        int push = stack_push(validation_stack, char_idx);
-                        if (push == -1) {
-                                free_memory(bracket_map, validation_stack, cell_array, NULL);
-                                fclose(bf_fileptr);
-                                return 1;
-                        }
-                        char_idx++;
-                }
-
-                else {
-                        int closer_position = stack_pop(validation_stack);
-                        if (closer_position == -1) {
-                                free_memory(bracket_map, validation_stack, cell_array, NULL);
-                                fclose(bf_fileptr);
-                                return 1;
-                        }
-
-                        bracket_map[closer_position] = char_idx;
-                        bracket_map[char_idx] = closer_position;
-                        char_idx++;
-                }
-        }
-
-        if (stack_empty(validation_stack) == 0) {
-                fprintf(stderr, "bracket mismatch\n");
-                free_memory(bracket_map, validation_stack, cell_array, NULL);
+        if (build_bracket_map(bracket_map, validation_stack, bf_fileptr) == 1) return 1;
+        free_memory(validation_stack, NULL);
+        
+        char *cell_array = calloc(CELL_ARRAY_LENGTH, CELL_SIZE);
+        if (memory_allocation_check(cell_array) == 1) {
                 fclose(bf_fileptr);
                 return 1;
         }
-
-        free(validation_stack);
 
         // pass 2
         rewind(bf_fileptr);
         
         int cell_ptr = 0;
-        char_idx = 0;
+        int curr_char = 0;
+        int char_idx = 0;
 
         while ((curr_char = fgetc(bf_fileptr)) != EOF) {
                 switch (curr_char) {
