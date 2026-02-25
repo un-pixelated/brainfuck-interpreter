@@ -2,33 +2,20 @@
 #include <stdlib.h>
 
 #include "./headers/constants.h"
-#include "./headers/helpers.h"
+#include "./headers/input_validation.h"
 #include "./headers/stack.h"
 
 int main(int argc, char *argv[]) {
-        if (argc < 2) {
-                fprintf(stderr, "usage: %s file.bf\n", argv[0]);
-                return 1;
-        }
+        char *filename = argv[1];
 
-        if (validate_ext(argv[1]) == 0) {
-                fprintf(stderr, "error: %s is not a valid brainfuck file\n       file extension must be .bf\n", argv[1]);
-                return 1;
-        }
+        if (validate_number_of_arguments(argc, argv[0]) == 1) exit(1);
+        
+        if (validate_extension(filename) == 1) exit(1);
 
-        FILE *bf_fileptr = fopen(argv[1], "r");
-        if (bf_fileptr == NULL) {
-                perror(argv[1]);
-                return 1;
-        }
+        FILE *bf_fileptr = fopen(filename, "r");
+        if (validate_file_exists(bf_fileptr, filename) == 1) exit(1);
 
-        // Empty file handling
-        if (fgetc(bf_fileptr) == EOF) {
-                fprintf(stderr, "error: empty file\n");
-                fclose(bf_fileptr);
-                return 1;
-        }
-        else rewind(bf_fileptr);
+        if (validate_file_not_empty(&bf_fileptr, fgetc(bf_fileptr)) == 1) exit(1);
 
         char *cell_array = calloc(ARRAY_LENGTH, CELL_SIZE);
         if (cell_array == NULL) {
