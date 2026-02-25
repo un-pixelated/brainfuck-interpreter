@@ -5,7 +5,7 @@
 
 #include "constants.h"
 
-void interpret_brainfuck(FILE *bf_fileptr, int *bracket_map, char *cell_array) {
+void interpret_bf(FILE *bf_fileptr, int *bracket_map, char *cell_array) {
         
         int cell_ptr = 0;
         int curr_char = 0;

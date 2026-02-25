@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
 
         // pass 2
         rewind(bf_fileptr);
-        interpret_brainfuck(bf_fileptr, bracket_map, cell_array);
+        interpret_bf(bf_fileptr, bracket_map, cell_array);
 
         free_memory(bracket_map, cell_array, NULL);
         fclose(bf_fileptr);
