@@ -5,7 +5,10 @@ A fast, lightweight brainfuck interpreter written in C.
 ## Building
 
 ```bash
-gcc interpreter.c -o yabi
+mkdir build
+cd build
+cmake ..
+make
 ```
 
 ## Usage
@@ -70,7 +73,7 @@ Most brainfuck interpreters scan forward or backward through the file at runtime
 
 ## Why I made this
 
-I started working on this to see whether I write could safe and clean C code and just learn a lot in general. I get this might not be the most complex of projects but I still learnt a lot about writing clean and structured code and I believe I am now ready to re-write this in C++ and learn OOP.
+I started working on this to see whether I could write safe and clean C code and just learn a lot in general. I get this might not be the most complex of projects but I still learnt a lot about writing clean and structured code and I believe I am now ready to re-write this in C++ and learn OOP.
 
 ## License
 
