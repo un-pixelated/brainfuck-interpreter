@@ -9,4 +9,4 @@ interpreter
 *.o
 *.out
 
-*.txt
+notes.txt
