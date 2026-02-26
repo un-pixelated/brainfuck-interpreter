@@ -1,3 +1,0 @@
-/Users/hardikchona/Projects/yabi/build/CMakeFiles/yabi.dir
-/Users/hardikchona/Projects/yabi/build/CMakeFiles/edit_cache.dir
-/Users/hardikchona/Projects/yabi/build/CMakeFiles/rebuild_cache.dir
